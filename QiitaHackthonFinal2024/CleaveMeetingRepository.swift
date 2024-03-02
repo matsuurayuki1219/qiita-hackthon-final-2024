@@ -10,3 +10,16 @@ import Foundation
 protocol CleaveMeetingRepositoryProtocol {
     func postSpeechText(text: String) async throws -> CleaveMeetingModel
 }
+
+class CleaveMeetingRepository: CleaveMeetingRepositoryProtocol {
+
+    private let api: CleaveMeetingApiProtocol
+
+    init(api: CleaveMeetingApiProtocol) {
+        self.api = api
+    }
+
+    func postSpeechText(text: String) async throws -> CleaveMeetingModel {
+        return try await api.postSpeechText(text: text).toModel()
+    }
+}

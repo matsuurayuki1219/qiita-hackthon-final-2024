@@ -10,6 +10,9 @@
 		D2C0FF4E2B9314A8000D5891 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF4D2B9314A8000D5891 /* MainViewModel.swift */; };
 		D2C0FF5E2B9319EE000D5891 /* CleaveMeetingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF5D2B9319EE000D5891 /* CleaveMeetingRepository.swift */; };
 		D2C0FF612B931A08000D5891 /* CleaveMeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF602B931A08000D5891 /* CleaveMeetingModel.swift */; };
+		D2C0FF652B931AB3000D5891 /* CleaveMeetingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF642B931AB3000D5891 /* CleaveMeetingEntity.swift */; };
+		D2C0FF672B931AEE000D5891 /* CleaveMeetingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF662B931AEE000D5891 /* CleaveMeetingApi.swift */; };
+		D2C0FF692B931D60000D5891 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF682B931D60000D5891 /* ApiError.swift */; };
 		EA99DE1E2B9313A500633E0C /* QiitaHackthonFinal2024App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99DE1D2B9313A500633E0C /* QiitaHackthonFinal2024App.swift */; };
 		EA99DE202B9313A500633E0C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99DE1F2B9313A500633E0C /* MainView.swift */; };
 		EA99DE222B9313A700633E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA99DE212B9313A700633E0C /* Assets.xcassets */; };
@@ -20,6 +23,9 @@
 		D2C0FF4D2B9314A8000D5891 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D2C0FF5D2B9319EE000D5891 /* CleaveMeetingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CleaveMeetingRepository.swift; path = QiitaHackthonFinal2024/CleaveMeetingRepository.swift; sourceTree = SOURCE_ROOT; };
 		D2C0FF602B931A08000D5891 /* CleaveMeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleaveMeetingModel.swift; sourceTree = "<group>"; };
+		D2C0FF642B931AB3000D5891 /* CleaveMeetingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleaveMeetingEntity.swift; sourceTree = "<group>"; };
+		D2C0FF662B931AEE000D5891 /* CleaveMeetingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleaveMeetingApi.swift; sourceTree = "<group>"; };
+		D2C0FF682B931D60000D5891 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		EA99DE1A2B9313A500633E0C /* QiitaHackthonFinal2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaHackthonFinal2024.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA99DE1D2B9313A500633E0C /* QiitaHackthonFinal2024App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaHackthonFinal2024App.swift; sourceTree = "<group>"; };
 		EA99DE1F2B9313A500633E0C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -51,6 +57,7 @@
 		D2C0FF4B2B93143E000D5891 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D2C0FF632B931AA0000D5891 /* Network */,
 				D2C0FF4F2B9314D1000D5891 /* Repository */,
 			);
 			path = Data;
@@ -70,6 +77,16 @@
 				D2C0FF602B931A08000D5891 /* CleaveMeetingModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D2C0FF632B931AA0000D5891 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0FF682B931D60000D5891 /* ApiError.swift */,
+				D2C0FF642B931AB3000D5891 /* CleaveMeetingEntity.swift */,
+				D2C0FF662B931AEE000D5891 /* CleaveMeetingApi.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		EA99DE112B9313A500633E0C = {
@@ -180,10 +197,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C0FF672B931AEE000D5891 /* CleaveMeetingApi.swift in Sources */,
 				D2C0FF612B931A08000D5891 /* CleaveMeetingModel.swift in Sources */,
 				EA99DE202B9313A500633E0C /* MainView.swift in Sources */,
 				D2C0FF5E2B9319EE000D5891 /* CleaveMeetingRepository.swift in Sources */,
 				EA99DE1E2B9313A500633E0C /* QiitaHackthonFinal2024App.swift in Sources */,
+				D2C0FF692B931D60000D5891 /* ApiError.swift in Sources */,
+				D2C0FF652B931AB3000D5891 /* CleaveMeetingEntity.swift in Sources */,
 				D2C0FF4E2B9314A8000D5891 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
