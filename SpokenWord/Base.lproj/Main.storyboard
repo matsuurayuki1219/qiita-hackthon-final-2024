@@ -16,23 +16,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speech_balloon" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-lx-WfG">
-                                <rect key="frame" x="50" y="50" width="924" height="996"/>
+                                <rect key="frame" x="50" y="50" width="924" height="976"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stare_closeeyes" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iog-y0-6Gx">
-                                <rect key="frame" x="20" y="566" width="984" height="660"/>
+                                <rect key="frame" x="20" y="546" width="984" height="660"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iog-y0-6Gx" secondAttribute="height" multiplier="82:55" id="aBh-Iu-t5e"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aq-UO-WOf">
-                                <rect key="frame" x="20" y="1246" width="984" height="60"/>
+                                <rect key="frame" x="120" y="1226" width="784" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="E63-nN-VFk"/>
-                                    <constraint firstAttribute="height" constant="60" id="ms8-Re-awi"/>
+                                    <constraint firstAttribute="height" constant="80" id="E63-nN-VFk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <state key="normal" title="侍をインバイトする">
+                                <state key="normal" title="サムライを召喚">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -40,7 +39,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoN-PB-cbZ">
-                                <rect key="frame" x="70" y="90" width="884" height="456"/>
+                                <rect key="frame" x="70" y="90" width="884" height="436"/>
                                 <attributedString key="attributedText"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -54,13 +53,13 @@
                             <constraint firstItem="iog-y0-6Gx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="J2s-pH-2Jv"/>
                             <constraint firstItem="4aq-UO-WOf" firstAttribute="top" secondItem="QJV-lx-WfG" secondAttribute="bottom" constant="200" id="LTR-tq-k5I"/>
                             <constraint firstItem="yoN-PB-cbZ" firstAttribute="leading" secondItem="QJV-lx-WfG" secondAttribute="leading" constant="20" id="W5I-BN-fyW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4aq-UO-WOf" secondAttribute="trailing" constant="20" id="cYo-Tv-Gde"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4aq-UO-WOf" secondAttribute="trailing" constant="120" id="cYo-Tv-Gde"/>
                             <constraint firstItem="yoN-PB-cbZ" firstAttribute="trailing" secondItem="QJV-lx-WfG" secondAttribute="trailing" constant="-20" id="gNv-tu-ogV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4aq-UO-WOf" secondAttribute="bottom" constant="40" id="jMw-rX-Sy5"/>
                             <constraint firstItem="QJV-lx-WfG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="qf7-EX-gkm"/>
                             <constraint firstItem="QJV-lx-WfG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="tRZ-LM-383"/>
                             <constraint firstItem="4aq-UO-WOf" firstAttribute="top" secondItem="iog-y0-6Gx" secondAttribute="bottom" constant="20" id="txD-fh-IB7"/>
-                            <constraint firstItem="4aq-UO-WOf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="u2o-60-S9S"/>
+                            <constraint firstItem="4aq-UO-WOf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="u2o-60-S9S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iog-y0-6Gx" secondAttribute="trailing" constant="20" id="wtg-QT-s4V"/>
                         </constraints>
                     </view>

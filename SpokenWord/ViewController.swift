@@ -42,7 +42,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet var recordButton: UIButton! {
         didSet {
-            recordButton.layer.cornerRadius = 30
+            recordButton.layer.cornerRadius = 40
         }
     }
 
@@ -170,7 +170,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.recognitionTask = nil
 
                 self.recordButton.isEnabled = true
-                self.recordButton.setTitle("侍をインバイトする", for: [])
+                self.recordButton.setTitle("サムライを召喚", for: [])
             }
         }
 
@@ -192,7 +192,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             recordButton.isEnabled = true
-            recordButton.setTitle("侍をインバイトする", for: [])
+            recordButton.setTitle("サムライを召喚", for: [])
         } else {
             recordButton.isEnabled = false
             recordButton.setTitle("Recognition Not Available", for: .disabled)
@@ -210,7 +210,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         } else {
             do {
                 try startRecording()
-                recordButton.setTitle("侍をインバイトする", for: [])
+                recordButton.setTitle("サムライを召喚", for: [])
             } catch {
                 recordButton.setTitle("Recording Not Available", for: [])
             }
