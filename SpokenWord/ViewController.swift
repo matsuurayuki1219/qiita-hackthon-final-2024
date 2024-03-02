@@ -36,8 +36,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     private let audioEngine = AVAudioEngine()
 
-    @IBOutlet var textView: UITextView!
-    
+    @IBOutlet weak var textView: UILabel!
+
     @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet var recordButton: UIButton! {
@@ -71,6 +71,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             .foregroundColor : UIColor.black,
             .paragraphStyle: lineSpaceStyle
         ]
+
+        textView.attributedText = NSAttributedString(string: "ぶった斬りサムライで御座る。", attributes: attributes)
     }
 
     override public func viewDidAppear(_ animated: Bool) {
@@ -182,8 +184,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         try audioEngine.start()
 
         // Let the user know to start talking.
-        let text = "会議は始まった御座いる。"
-        textView.attributedText = NSAttributedString(string: text, attributes: attributes)
+        textView.attributedText = NSAttributedString(string: "会議は始まったで御座る。", attributes: attributes)
     }
 
     // MARK: SFSpeechRecognizerDelegate
@@ -234,13 +235,11 @@ private extension ViewController {
         viewModel.$result
             .sink(receiveValue: { result in
                 if result?.cleave == true {
-//                    self.textView.backgroundColor = .red
                     self.imageView.image = .init(named: "angry")
                     self.playEffectSound()
-                    self.textView.text = result!.reason
+                    self.textView.attributedText = NSAttributedString(string: result!.reason, attributes: self.attributes)
                     print("Reason: \(result!.reason)")
                 } else {
-//                    self.textView.backgroundColor = .green
                     let openCloseEyes = Bool.random()
                     if openCloseEyes {
                         self.imageView.image = .init(named: "stare_openeyes")
@@ -249,7 +248,7 @@ private extension ViewController {
                         self.imageView.image = .init(named: "stare_closeeyes")
                     }
 
-                    self.textView.text = "いいね。ひきつづける"
+                    self.textView.attributedText = NSAttributedString(string: "いいね。ひきつづける", attributes: self.attributes)
                 }
 
             }).store(in: &cancellables)

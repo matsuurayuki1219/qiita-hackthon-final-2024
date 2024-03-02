@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		736165982176725C0062D377 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		738998B221515C9900E378D8 /* SpokenWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpokenWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		738998B221515C9900E378D8 /* ぶった斬りサムライ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ぶった斬りサムライ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		738998B521515C9900E378D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		738998B721515C9900E378D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		738998BA21515C9900E378D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		738998B321515C9900E378D8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				738998B221515C9900E378D8 /* SpokenWord.app */,
+				738998B221515C9900E378D8 /* ぶった斬りサムライ.app */,
 				9A853EAF2A0196B500FEAE5E /* datagenerator */,
 			);
 			name = Products;
@@ -202,7 +202,7 @@
 			packageProductDependencies = (
 			);
 			productName = SpokenWord;
-			productReference = 738998B221515C9900E378D8 /* SpokenWord.app */;
+			productReference = 738998B221515C9900E378D8 /* ぶった斬りサムライ.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9A853EAE2A0196B500FEAE5E /* datagenerator */ = {
@@ -457,7 +457,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.SpokenWord${SAMPLE_CODE_DISAMBIGUATOR}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "ぶった斬りサムライ";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -478,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.SpokenWord${SAMPLE_CODE_DISAMBIGUATOR}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "ぶった斬りサムライ";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
