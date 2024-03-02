@@ -9,6 +9,7 @@ import UIKit
 import Speech
 import Combine
 
+
 public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     let viewModel = ViewModel()
@@ -26,6 +27,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet var textView: UITextView!
     
+    @IBOutlet weak var imageView: UIImageView!
+
     @IBOutlet var recordButton: UIButton!
     
     // MARK: Custom LM Support
@@ -198,9 +201,17 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
 private extension ViewController {
     func addObserver() {
-        viewModel.$results
-            .sink(receiveValue: { results in
-                print(results)
+        viewModel.$result
+            .sink(receiveValue: { result in
+                if result?.cleave == true {
+                    self.textView.backgroundColor = .red
+                    self.imageView.image = .init(named: "angry")
+                    print("Reason: \(result!.reason)")
+                } else {
+                    self.textView.backgroundColor = .green
+                    self.imageView.image = .init(named: "stare")
+                }
+
             }).store(in: &cancellables)
     }
 }
