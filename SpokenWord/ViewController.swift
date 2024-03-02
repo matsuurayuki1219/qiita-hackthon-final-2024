@@ -52,6 +52,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         // Disable the record buttons until authorization has been granted.
         recordButton.isEnabled = false
 
+        textView.font = UIFont(name: "Tsukushi B Round Gothic", size: 40)
+
         addObserver()
 
     }
