@@ -12,4 +12,5 @@ struct CleaveMeetingModel {
     let id: Int
     let sentence: String
     let cleave: Bool
+    let reason: String
 }

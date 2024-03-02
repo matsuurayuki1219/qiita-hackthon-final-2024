@@ -10,6 +10,7 @@ import Speech
 import Combine
 import AVFAudio
 
+
 public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     let viewModel = ViewModel()
@@ -28,6 +29,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     private let audioEngine = AVAudioEngine()
 
     @IBOutlet var textView: UITextView!
+    
+    @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet var recordButton: UIButton!
 
@@ -214,9 +217,17 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
 private extension ViewController {
     func addObserver() {
-        viewModel.$results
-            .sink(receiveValue: { results in
-                print(results)
+        viewModel.$result
+            .sink(receiveValue: { result in
+                if result?.cleave == true {
+                    self.textView.backgroundColor = .red
+                    self.imageView.image = .init(named: "angry")
+                    print("Reason: \(result!.reason)")
+                } else {
+                    self.textView.backgroundColor = .green
+                    self.imageView.image = .init(named: "stare")
+                }
+
             }).store(in: &cancellables)
     }
 }
