@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -86,6 +86,7 @@
 				738998B321515C9900E378D8 /* Products */,
 				D058EB7E4F0D06DE7CA9290A /* Configuration */,
 				AE91C1619D46B1844D542CE9 /* LICENSE */,
+				EADC82902B93938C00FBCAC8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +176,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		EADC82902B93938C00FBCAC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,6 +199,8 @@
 			dependencies = (
 			);
 			name = SpokenWord;
+			packageProductDependencies = (
+			);
 			productName = SpokenWord;
 			productReference = 738998B221515C9900E378D8 /* SpokenWord.app */;
 			productType = "com.apple.product-type.application";
@@ -242,7 +252,6 @@
 			);
 			mainGroup = 738998A921515C9900E378D8;
 			packageReferences = (
-				EABEC6262B938AA1003913D3 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 738998B321515C9900E378D8 /* Products */;
 			projectDirPath = "";
@@ -546,17 +555,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		EABEC6262B938AA1003913D3 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.4.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 738998AA21515C9900E378D8 /* Project object */;
 }

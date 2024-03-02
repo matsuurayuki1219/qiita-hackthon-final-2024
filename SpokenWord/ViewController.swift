@@ -10,7 +10,6 @@ import Speech
 import Combine
 import AVFAudio
 
-
 public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     let viewModel = ViewModel()
@@ -32,7 +31,11 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
 
-    @IBOutlet var recordButton: UIButton!
+    @IBOutlet var recordButton: UIButton! {
+        didSet {
+            recordButton.layer.cornerRadius = 30
+        }
+    }
 
     // MARK: Custom LM Support
 
@@ -53,7 +56,6 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         recordButton.isEnabled = false
 
         addObserver()
-
     }
 
     override public func viewDidAppear(_ animated: Bool) {
@@ -151,7 +153,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.recognitionTask = nil
 
                 self.recordButton.isEnabled = true
-                self.recordButton.setTitle("Start Recording", for: [])
+                self.recordButton.setTitle("侍をインバイトする", for: [])
             }
         }
 
@@ -165,7 +167,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         try audioEngine.start()
 
         // Let the user know to start talking.
-        textView.text = "(Go ahead, I'm listening)"
+        textView.text = "会議は始まった御座いる。"
     }
 
     // MARK: SFSpeechRecognizerDelegate
@@ -173,7 +175,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             recordButton.isEnabled = true
-            recordButton.setTitle("Start Recording", for: [])
+            recordButton.setTitle("侍をインバイトする", for: [])
         } else {
             recordButton.isEnabled = false
             recordButton.setTitle("Recognition Not Available", for: .disabled)
@@ -191,7 +193,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         } else {
             do {
                 try startRecording()
-                recordButton.setTitle("Stop Recording", for: [])
+                recordButton.setTitle("侍をインバイトする", for: [])
             } catch {
                 recordButton.setTitle("Recording Not Available", for: [])
             }
@@ -216,14 +218,21 @@ private extension ViewController {
         viewModel.$result
             .sink(receiveValue: { result in
                 if result?.cleave == true {
-                    self.textView.backgroundColor = .red
+//                    self.textView.backgroundColor = .red
                     self.imageView.image = .init(named: "angry")
                     self.playEffectSound()
                     self.textView.text = result!.reason
                     print("Reason: \(result!.reason)")
                 } else {
-                    self.textView.backgroundColor = .green
-                    self.imageView.image = .init(named: "stare")
+//                    self.textView.backgroundColor = .green
+                    let openCloseEyes = Bool.random()
+                    if openCloseEyes {
+                        self.imageView.image = .init(named: "stare_openeyes")
+                    }
+                    else {
+                        self.imageView.image = .init(named: "stare_closeeyes")
+                    }
+
                     self.textView.text = "いいね。ひきつづける"
                 }
 
