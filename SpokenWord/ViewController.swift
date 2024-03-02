@@ -7,10 +7,13 @@ The root view controller that provides a button to start and stop recording, and
 
 import UIKit
 import Speech
+import Combine
 
 public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
+
     let viewModel = ViewModel()
-    
+    private var cancellables: Set<AnyCancellable> = []
+
     // MARK: Properties
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))!
@@ -42,6 +45,9 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         // Disable the record buttons until authorization has been granted.
         recordButton.isEnabled = false
+
+        addObserver()
+
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -110,7 +116,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         // Create and configure the speech recognition request.
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
-        recognitionRequest.shouldReportPartialResults = true
+        recognitionRequest.shouldReportPartialResults = false
         recognitionRequest.addsPunctuation = true
         // Keep speech recognition data on device
         if #available(iOS 13, *) {
@@ -127,6 +133,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             if let result = result {
                 // Update the text view with the results.
+                self.viewModel.postSpeechText(text: result.bestTranscription.formattedString)
                 self.textView.text = result.bestTranscription.formattedString
                 isFinal = result.isFinal
             }
@@ -188,3 +195,12 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
 }
 
+
+private extension ViewController {
+    func addObserver() {
+        viewModel.$results
+            .sink(receiveValue: { results in
+                print(results)
+            }).store(in: &cancellables)
+    }
+}
