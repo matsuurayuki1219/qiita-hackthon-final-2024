@@ -20,13 +20,8 @@ class ViewModel {
     func postSpeechText(text: String) {
         Task {
             do {
-                let texts = splitText(text)
-                for text in texts {
-                    guard !text.isEmpty else { continue }
-                    print("▶️送りました！：\(text)")
-                    result = try await repository.postSpeechMessage(text: text)
-                    print("◀️結果が来ました！:\(result!.cleave)")
-                }
+                let convertedText =  text.replacingOccurrences(of: "。", with: "→").replacingOccurrences(of: "？", with: "→")
+                result = try await repository.postSpeechMessage(text: convertedText)
             } catch {
                 print("サーバとの通信ができていません")
             }
