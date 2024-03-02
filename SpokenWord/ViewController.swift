@@ -12,6 +12,15 @@ import AVFAudio
 
 public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
+    lazy var lineSpaceStyle: NSMutableParagraphStyle = {
+        let lineSpaceStyle = NSMutableParagraphStyle()
+        lineSpaceStyle.lineSpacing = 16
+        return lineSpaceStyle
+    }()
+
+    // 装飾する内容
+    var attributes: [NSAttributedString.Key : Any] = [:]
+
     let viewModel = ViewModel()
     private var cancellables: Set<AnyCancellable> = []
 
@@ -56,6 +65,12 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         recordButton.isEnabled = false
 
         addObserver()
+
+        attributes = [
+            .font : UIFont.boldSystemFont(ofSize: 40.0),
+            .foregroundColor : UIColor.black,
+            .paragraphStyle: lineSpaceStyle
+        ]
     }
 
     override public func viewDidAppear(_ animated: Bool) {
@@ -167,7 +182,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         try audioEngine.start()
 
         // Let the user know to start talking.
-        textView.text = "会議は始まった御座いる。"
+        let text = "会議は始まった御座いる。"
+        textView.attributedText = NSAttributedString(string: text, attributes: attributes)
     }
 
     // MARK: SFSpeechRecognizerDelegate
