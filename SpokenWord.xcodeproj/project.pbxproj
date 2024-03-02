@@ -15,6 +15,7 @@
 		738998C021515C9A00E378D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738998BE21515C9A00E378D8 /* LaunchScreen.storyboard */; };
 		9A853EAA2A0191CC00FEAE5E /* customlm in Resources */ = {isa = PBXBuildFile; fileRef = 9A853EA92A0191CC00FEAE5E /* customlm */; };
 		9A853EB22A0196B500FEAE5E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A853EB12A0196B500FEAE5E /* main.swift */; };
+		D28D1A252B937DB500ED4D1E /* cleave_effect_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D28D1A242B937DB500ED4D1E /* cleave_effect_sound.mp3 */; };
 		D2C0FF852B9355F3000D5891 /* CleaveMeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF842B9355F3000D5891 /* CleaveMeetingModel.swift */; };
 		D2C0FF8D2B9355F9000D5891 /* CleaveMeetingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF882B9355F9000D5891 /* CleaveMeetingRepository.swift */; };
 		D2C0FF8E2B9355F9000D5891 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF8A2B9355F9000D5891 /* ApiError.swift */; };
@@ -47,6 +48,7 @@
 		9A853EA92A0191CC00FEAE5E /* customlm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = customlm; sourceTree = "<group>"; };
 		9A853EAF2A0196B500FEAE5E /* datagenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = datagenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A853EB12A0196B500FEAE5E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D28D1A242B937DB500ED4D1E /* cleave_effect_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cleave_effect_sound.mp3; sourceTree = "<group>"; };
 		D2C0FF842B9355F3000D5891 /* CleaveMeetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaveMeetingModel.swift; sourceTree = "<group>"; };
 		D2C0FF882B9355F9000D5891 /* CleaveMeetingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaveMeetingRepository.swift; sourceTree = "<group>"; };
 		D2C0FF8A2B9355F9000D5891 /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		738998B421515C9900E378D8 /* SpokenWord */ = {
 			isa = PBXGroup;
 			children = (
+				D28D1A242B937DB500ED4D1E /* cleave_effect_sound.mp3 */,
 				D2C0FF862B9355F9000D5891 /* Data */,
 				D2C0FF832B9355F3000D5891 /* Model */,
 				9A853EA92A0191CC00FEAE5E /* customlm */,
@@ -258,6 +261,7 @@
 				738998BD21515C9A00E378D8 /* Assets.xcassets in Resources */,
 				736165992176725C0062D377 /* README.md in Resources */,
 				738998BB21515C9900E378D8 /* Main.storyboard in Resources */,
+				D28D1A252B937DB500ED4D1E /* cleave_effect_sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

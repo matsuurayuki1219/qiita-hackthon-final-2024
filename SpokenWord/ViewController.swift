@@ -1,33 +1,36 @@
 /*
-See the LICENSE.txt file for this sample’s licensing information.
+ See the LICENSE.txt file for this sample’s licensing information.
 
-Abstract:
-The root view controller that provides a button to start and stop recording, and which displays the speech recognition results.
-*/
+ Abstract:
+ The root view controller that provides a button to start and stop recording, and which displays the speech recognition results.
+ */
 
 import UIKit
 import Speech
 import Combine
+import AVFAudio
 
 public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     let viewModel = ViewModel()
     private var cancellables: Set<AnyCancellable> = []
 
+    private(set) var effectSoundPlayer = AVAudioPlayer()
+
     // MARK: Properties
-    
+
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja_JP"))!
 
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    
+
     private var recognitionTask: SFSpeechRecognitionTask?
-    
+
     private let audioEngine = AVAudioEngine()
-    
+
     @IBOutlet var textView: UITextView!
-    
+
     @IBOutlet var recordButton: UIButton!
-    
+
     // MARK: Custom LM Support
 
     @available(iOS 17, *)
@@ -37,25 +40,25 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         let dynamicVocabulary = outputDir.appendingPathComponent("Vocab")
         return SFSpeechLanguageModel.Configuration(languageModel: dynamicLanguageModel, vocabulary: dynamicVocabulary)
     }
-    
+
     // MARK: UIViewController
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Disable the record buttons until authorization has been granted.
         recordButton.isEnabled = false
 
         addObserver()
 
     }
-    
+
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Configure the SFSpeechRecognizer object already
         // stored in a local member variable.
         speechRecognizer.delegate = self
-        
+
         // Make the authorization request.
         SFSpeechRecognizer.requestAuthorization { authStatus in
 
@@ -83,30 +86,32 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                 case .denied:
                     self.recordButton.isEnabled = false
                     self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
-                    
+
                 case .restricted:
                     self.recordButton.isEnabled = false
                     self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
-                    
+
                 case .notDetermined:
                     self.recordButton.isEnabled = false
                     self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
-                    
+
                 default:
                     self.recordButton.isEnabled = false
                 }
             }
         }
     }
-    
+
     private func startRecording() throws {
-        
+
+        playEffectSound()
+
         // Cancel the previous task if it's running.
         if let recognitionTask = recognitionTask {
             recognitionTask.cancel()
             self.recognitionTask = nil
         }
-        
+
         // Configure the audio session for the app.
         let audioSession = AVAudioSession.sharedInstance()
         try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
@@ -125,27 +130,27 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                 recognitionRequest.customizedLanguageModel = self.lmConfiguration
             }
         }
-        
+
         // Create a recognition task for the speech recognition session.
         // Keep a reference to the task so that it can be canceled.
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
             var isFinal = false
-            
+
             if let result = result {
                 // Update the text view with the results.
                 self.viewModel.postSpeechText(text: result.bestTranscription.formattedString)
                 self.textView.text = result.bestTranscription.formattedString
                 isFinal = result.isFinal
             }
-            
+
             if error != nil || isFinal {
                 // Stop recognizing speech if there is a problem.
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
-                
+
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                
+
                 self.recordButton.isEnabled = true
                 self.recordButton.setTitle("Start Recording", for: [])
             }
@@ -156,16 +161,16 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
             self.recognitionRequest?.append(buffer)
         }
-        
+
         audioEngine.prepare()
         try audioEngine.start()
-        
+
         // Let the user know to start talking.
         textView.text = "(Go ahead, I'm listening)"
     }
-    
+
     // MARK: SFSpeechRecognizerDelegate
-    
+
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             recordButton.isEnabled = true
@@ -175,9 +180,9 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             recordButton.setTitle("Recognition Not Available", for: .disabled)
         }
     }
-    
+
     // MARK: Interface Builder actions
-    
+
     @IBAction func recordButtonTapped() {
         if audioEngine.isRunning {
             audioEngine.stop()
@@ -191,6 +196,17 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             } catch {
                 recordButton.setTitle("Recording Not Available", for: [])
             }
+        }
+    }
+
+    func playEffectSound() {
+        guard let url = Bundle.main.url(forResource: "cleave_effect_sound", withExtension: "mp3") else { return }
+        do {
+            effectSoundPlayer = try .init(contentsOf: url)
+            effectSoundPlayer.play()
+        }
+        catch {
+            // no-ops
         }
     }
 }
