@@ -15,6 +15,11 @@
 		738998C021515C9A00E378D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738998BE21515C9A00E378D8 /* LaunchScreen.storyboard */; };
 		9A853EAA2A0191CC00FEAE5E /* customlm in Resources */ = {isa = PBXBuildFile; fileRef = 9A853EA92A0191CC00FEAE5E /* customlm */; };
 		9A853EB22A0196B500FEAE5E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A853EB12A0196B500FEAE5E /* main.swift */; };
+		D2C0FF852B9355F3000D5891 /* CleaveMeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF842B9355F3000D5891 /* CleaveMeetingModel.swift */; };
+		D2C0FF8D2B9355F9000D5891 /* CleaveMeetingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF882B9355F9000D5891 /* CleaveMeetingRepository.swift */; };
+		D2C0FF8E2B9355F9000D5891 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF8A2B9355F9000D5891 /* ApiError.swift */; };
+		D2C0FF8F2B9355F9000D5891 /* CleaveMeetingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF8B2B9355F9000D5891 /* CleaveMeetingApi.swift */; };
+		D2C0FF902B9355F9000D5891 /* CleaveMeetingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF8C2B9355F9000D5891 /* CleaveMeetingEntity.swift */; };
 		EA4F99B32B93509C00EBC046 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F99B22B93509C00EBC046 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +47,11 @@
 		9A853EA92A0191CC00FEAE5E /* customlm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = customlm; sourceTree = "<group>"; };
 		9A853EAF2A0196B500FEAE5E /* datagenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = datagenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A853EB12A0196B500FEAE5E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D2C0FF842B9355F3000D5891 /* CleaveMeetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaveMeetingModel.swift; sourceTree = "<group>"; };
+		D2C0FF882B9355F9000D5891 /* CleaveMeetingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaveMeetingRepository.swift; sourceTree = "<group>"; };
+		D2C0FF8A2B9355F9000D5891 /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		D2C0FF8B2B9355F9000D5891 /* CleaveMeetingApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaveMeetingApi.swift; sourceTree = "<group>"; };
+		D2C0FF8C2B9355F9000D5891 /* CleaveMeetingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaveMeetingEntity.swift; sourceTree = "<group>"; };
 		EA4F99B22B93509C00EBC046 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		F30A48563BC3EAE408DA91B3 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		FCA3813F8DC6D171AB712B51 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -89,6 +99,8 @@
 		738998B421515C9900E378D8 /* SpokenWord */ = {
 			isa = PBXGroup;
 			children = (
+				D2C0FF862B9355F9000D5891 /* Data */,
+				D2C0FF832B9355F3000D5891 /* Model */,
 				9A853EA92A0191CC00FEAE5E /* customlm */,
 				738998B521515C9900E378D8 /* AppDelegate.swift */,
 				738998B721515C9900E378D8 /* ViewController.swift */,
@@ -123,6 +135,41 @@
 				F30A48563BC3EAE408DA91B3 /* SampleCode.xcconfig */,
 			);
 			name = Configuration;
+			sourceTree = "<group>";
+		};
+		D2C0FF832B9355F3000D5891 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0FF842B9355F3000D5891 /* CleaveMeetingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2C0FF862B9355F9000D5891 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0FF872B9355F9000D5891 /* Repository */,
+				D2C0FF892B9355F9000D5891 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D2C0FF872B9355F9000D5891 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0FF882B9355F9000D5891 /* CleaveMeetingRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D2C0FF892B9355F9000D5891 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0FF8A2B9355F9000D5891 /* ApiError.swift */,
+				D2C0FF8B2B9355F9000D5891 /* CleaveMeetingApi.swift */,
+				D2C0FF8C2B9355F9000D5891 /* CleaveMeetingEntity.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,8 +269,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				738998B821515C9900E378D8 /* ViewController.swift in Sources */,
+				D2C0FF8D2B9355F9000D5891 /* CleaveMeetingRepository.swift in Sources */,
+				D2C0FF902B9355F9000D5891 /* CleaveMeetingEntity.swift in Sources */,
+				D2C0FF852B9355F3000D5891 /* CleaveMeetingModel.swift in Sources */,
 				EA4F99B32B93509C00EBC046 /* ViewModel.swift in Sources */,
+				D2C0FF8F2B9355F9000D5891 /* CleaveMeetingApi.swift in Sources */,
 				738998B621515C9900E378D8 /* AppDelegate.swift in Sources */,
+				D2C0FF8E2B9355F9000D5891 /* ApiError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -365,7 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
