@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2C0FF4E2B9314A8000D5891 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF4D2B9314A8000D5891 /* MainViewModel.swift */; };
 		EA99DE1E2B9313A500633E0C /* QiitaHackthonFinal2024App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99DE1D2B9313A500633E0C /* QiitaHackthonFinal2024App.swift */; };
-		EA99DE202B9313A500633E0C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99DE1F2B9313A500633E0C /* ContentView.swift */; };
+		EA99DE202B9313A500633E0C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99DE1F2B9313A500633E0C /* MainView.swift */; };
 		EA99DE222B9313A700633E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA99DE212B9313A700633E0C /* Assets.xcassets */; };
 		EA99DE252B9313A700633E0C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA99DE242B9313A700633E0C /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2C0FF4D2B9314A8000D5891 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		EA99DE1A2B9313A500633E0C /* QiitaHackthonFinal2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaHackthonFinal2024.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA99DE1D2B9313A500633E0C /* QiitaHackthonFinal2024App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaHackthonFinal2024App.swift; sourceTree = "<group>"; };
-		EA99DE1F2B9313A500633E0C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EA99DE1F2B9313A500633E0C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EA99DE212B9313A700633E0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA99DE242B9313A700633E0C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EA99DE262B9313A700633E0C /* QiitaHackthonFinal2024.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QiitaHackthonFinal2024.entitlements; sourceTree = "<group>"; };
@@ -33,6 +35,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2C0FF4A2B931427000D5891 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				EA99DE1F2B9313A500633E0C /* MainView.swift */,
+				D2C0FF4D2B9314A8000D5891 /* MainViewModel.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D2C0FF4B2B93143E000D5891 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0FF4F2B9314D1000D5891 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D2C0FF4F2B9314D1000D5891 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D2C0FF502B9314DB000D5891 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2C0FF512B9314FE000D5891 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D2C0FF502B9314DB000D5891 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		EA99DE112B9313A500633E0C = {
 			isa = PBXGroup;
 			children = (
@@ -52,8 +93,10 @@
 		EA99DE1C2B9313A500633E0C /* QiitaHackthonFinal2024 */ = {
 			isa = PBXGroup;
 			children = (
+				D2C0FF512B9314FE000D5891 /* Domain */,
+				D2C0FF4B2B93143E000D5891 /* Data */,
+				D2C0FF4A2B931427000D5891 /* Presentation */,
 				EA99DE1D2B9313A500633E0C /* QiitaHackthonFinal2024App.swift */,
-				EA99DE1F2B9313A500633E0C /* ContentView.swift */,
 				EA99DE212B9313A700633E0C /* Assets.xcassets */,
 				EA99DE262B9313A700633E0C /* QiitaHackthonFinal2024.entitlements */,
 				EA99DE232B9313A700633E0C /* Preview Content */,
@@ -139,8 +182,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA99DE202B9313A500633E0C /* ContentView.swift in Sources */,
+				EA99DE202B9313A500633E0C /* MainView.swift in Sources */,
 				EA99DE1E2B9313A500633E0C /* QiitaHackthonFinal2024App.swift in Sources */,
+				D2C0FF4E2B9314A8000D5891 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
