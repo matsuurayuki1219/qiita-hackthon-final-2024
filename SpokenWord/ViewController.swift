@@ -106,9 +106,6 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
 
     private func startRecording() throws {
-
-        playEffectSound()
-
         // Cancel the previous task if it's running.
         if let recognitionTask = recognitionTask {
             recognitionTask.cancel()
@@ -142,7 +139,6 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             if let result = result {
                 // Update the text view with the results.
                 self.viewModel.postSpeechText(text: result.bestTranscription.formattedString)
-                self.textView.text = result.bestTranscription.formattedString
                 isFinal = result.isFinal
             }
 
@@ -222,10 +218,13 @@ private extension ViewController {
                 if result?.cleave == true {
                     self.textView.backgroundColor = .red
                     self.imageView.image = .init(named: "angry")
+                    self.playEffectSound()
+                    self.textView.text = result!.reason
                     print("Reason: \(result!.reason)")
                 } else {
                     self.textView.backgroundColor = .green
                     self.imageView.image = .init(named: "stare")
+                    self.textView.text = "いいね。ひきつづける"
                 }
 
             }).store(in: &cancellables)
