@@ -72,7 +72,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             .paragraphStyle: lineSpaceStyle
         ]
 
-        textView.attributedText = NSAttributedString(string: "ぶった斬りサムライで御座る。", attributes: attributes)
+        textView.attributedText = NSAttributedString(string: "ぶった斬りサムライでござる。", attributes: attributes)
     }
 
     override public func viewDidAppear(_ animated: Bool) {
@@ -184,7 +184,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         try audioEngine.start()
 
         // Let the user know to start talking.
-        textView.attributedText = NSAttributedString(string: "会議は始まったで御座る。", attributes: attributes)
+        textView.attributedText = NSAttributedString(string: "会議は始まったでござる。", attributes: attributes)
     }
 
     // MARK: SFSpeechRecognizerDelegate
@@ -207,7 +207,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             recognitionRequest?.endAudio()
             recordButton.isEnabled = false
             recordButton.setTitle("サムライを召喚", for: [])
-            textView.attributedText = NSAttributedString(string: "ぶった斬りサムライで御座る。", attributes: attributes)
+            textView.attributedText = NSAttributedString(string: "ぶった斬りサムライでござる。", attributes: attributes)
             cancellables.forEach { $0.cancel() }
         } else {
             do {
