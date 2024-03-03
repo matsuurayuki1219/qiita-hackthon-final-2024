@@ -206,11 +206,13 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             recordButton.isEnabled = false
-            recordButton.setTitle("Stopping", for: .disabled)
+            recordButton.setTitle("サムライを召喚", for: [])
+            textView.attributedText = NSAttributedString(string: "ぶった斬りサムライで御座る。", attributes: attributes)
+            cancellables.forEach { $0.cancel() }
         } else {
             do {
                 try startRecording()
-                recordButton.setTitle("サムライを召喚", for: [])
+                recordButton.setTitle("会議中", for: [])
             } catch {
                 recordButton.setTitle("Recording Not Available", for: [])
             }
