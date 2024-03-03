@@ -22,6 +22,7 @@
 		D2C0FF8F2B9355F9000D5891 /* CleaveMeetingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF8B2B9355F9000D5891 /* CleaveMeetingApi.swift */; };
 		D2C0FF902B9355F9000D5891 /* CleaveMeetingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C0FF8C2B9355F9000D5891 /* CleaveMeetingEntity.swift */; };
 		EA4F99B32B93509C00EBC046 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F99B22B93509C00EBC046 /* ViewModel.swift */; };
+		EADC82942B941D5400FBCAC8 /* cleave_effect_sound_max.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EADC82932B941D5400FBCAC8 /* cleave_effect_sound_max.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,7 @@
 		D2C0FF8B2B9355F9000D5891 /* CleaveMeetingApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaveMeetingApi.swift; sourceTree = "<group>"; };
 		D2C0FF8C2B9355F9000D5891 /* CleaveMeetingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleaveMeetingEntity.swift; sourceTree = "<group>"; };
 		EA4F99B22B93509C00EBC046 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EADC82932B941D5400FBCAC8 /* cleave_effect_sound_max.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cleave_effect_sound_max.mp3; sourceTree = "<group>"; };
 		F30A48563BC3EAE408DA91B3 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		FCA3813F8DC6D171AB712B51 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				D28D1A242B937DB500ED4D1E /* cleave_effect_sound.mp3 */,
+				EADC82932B941D5400FBCAC8 /* cleave_effect_sound_max.mp3 */,
 				D2C0FF862B9355F9000D5891 /* Data */,
 				D2C0FF832B9355F3000D5891 /* Model */,
 				9A853EA92A0191CC00FEAE5E /* customlm */,
@@ -268,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EADC82942B941D5400FBCAC8 /* cleave_effect_sound_max.mp3 in Resources */,
 				738998C021515C9A00E378D8 /* LaunchScreen.storyboard in Resources */,
 				9A853EAA2A0191CC00FEAE5E /* customlm in Resources */,
 				738998BD21515C9A00E378D8 /* Assets.xcassets in Resources */,

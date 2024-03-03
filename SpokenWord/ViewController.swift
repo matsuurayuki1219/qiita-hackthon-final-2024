@@ -221,8 +221,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
 
-    func playEffectSound() {
-        guard let url = Bundle.main.url(forResource: "cleave_effect_sound", withExtension: "mp3") else { return }
+    func playEffectSound(soundFile: SoundFile) {
+        guard let url = Bundle.main.url(forResource: soundFile.rawValue, withExtension: "mp3") else { return }
         do {
             effectSoundPlayer = try .init(contentsOf: url)
             effectSoundPlayer.play()
@@ -233,6 +233,11 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
 }
 
+enum SoundFile: String {
+    case cleaveEffectSound = "cleave_effect_sound"
+    case cleaveEffectSoundMax = "cleave_effect_sound_max"
+
+}
 
 private extension ViewController {
     func addObserver() {
@@ -243,35 +248,39 @@ private extension ViewController {
 
                 print("cleave: \(result.cleave)")
                 print("Reason: \(result.reason)")
-//
-//                let ngCount = self.lastThreeCleaves.filter({ $0 }).count
-//
-//                if ngCount >= 3 {
-//論点がズレているでござる！エンジニアが最高に幸せに感じる事を議論するでござる！！！！！！
-//                } else if ngCount == 2 {
-//
-//                } else if ngCount == 1 {
-//
-//                } else if ngCount == 0 {
-//
-//                }
 
-                if result.ngCase {
+                let ngCount = self.lastThreeCleaves.filter({ $0 }).count
+                print(ngCount)
+
+                if ngCount >= 5 {
+                    let text = "論点がズレているでござる！エンジニアが最高に幸せに感じる事を議論するでござる！！！！！！"
                     self.imageView.image = .init(named: "angry")
-                    self.playEffectSound()
+                    self.playEffectSound(soundFile: .cleaveEffectSoundMax)
+                    self.textView.attributedText = NSAttributedString(string: text, attributes: self.attributes)
+                } else if ngCount == 2 || ngCount == 3 || ngCount == 4 {
+                    let text = result.reason
+                    self.imageView.image = .init(named: "angry")
+                    self.playEffectSound(soundFile: .cleaveEffectSound)
                     self.textView.attributedText = NSAttributedString(string: result.reason, attributes: self.attributes)
-                } else {
-                    print("lastThreeCleaves: \(self.lastThreeCleaves)")
-//                    if self.lastThreeCleaves.filter({ $0 }).count == 0 {
-//                        self.imageView.image = .init(named: "sleep")
-//                    } else {
-//                        self.imageView.image = Bool.random() ? .init(named: "stare_openeyes") : .init(named: "stare_closeeyes")
-//                    }
-
+                } else if ngCount == 1 {
+                    let text = "効率よく会議が進んでいる"
                     self.imageView.image = Bool.random() ? .init(named: "stare_openeyes") : .init(named: "stare_closeeyes")
-
-                    self.textView.attributedText = NSAttributedString(string: "効率よく会議が進んでいる", attributes: self.attributes)
+                    self.textView.attributedText = NSAttributedString(string: text, attributes: self.attributes)
+                } else if ngCount == 0 {
+                    let text = "効率よく会議が進んでいる"
+                    self.imageView.image = .init(named: "sleep")
+                    self.textView.attributedText = NSAttributedString(string: text, attributes: self.attributes)
                 }
+//
+//                if result.ngCase {
+//                    self.imageView.image = .init(named: "angry")
+//                    self.playEffectSound(soundFile: .cleaveEffectSound)
+//                    self.textView.attributedText = NSAttributedString(string: result.reason, attributes: self.attributes)
+//                } else {
+//                    print("lastThreeCleaves: \(self.lastThreeCleaves)")
+//                    self.imageView.image = Bool.random() ? .init(named: "stare_openeyes") : .init(named: "stare_closeeyes")
+//                    self.textView.attributedText = NSAttributedString(string: "効率よく会議が進んでいる", attributes: self.attributes)
+//                }
             }).store(in: &cancellables)
     }
 }
