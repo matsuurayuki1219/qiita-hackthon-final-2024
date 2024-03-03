@@ -12,8 +12,10 @@ import AVFAudio
 
 public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var recentCleaves: [Bool] = []
-    var lastThreeCleaves: [Bool] { recentCleaves.suffix(3) }
+    var lastFiveCleaves: [Bool] { recentCleaves.suffix(5) }
 
+    var didSound = false
+    var isComplete = false
     lazy var lineSpaceStyle: NSMutableParagraphStyle = {
         let lineSpaceStyle = NSMutableParagraphStyle()
         lineSpaceStyle.lineSpacing = 16
@@ -209,7 +211,9 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             recognitionRequest?.endAudio()
             recordButton.isEnabled = false
             recordButton.setTitle("サムライを召喚", for: [])
-            textView.attributedText = NSAttributedString(string: "ぶった斬りサムライでござる。", attributes: attributes)
+            if !isComplete {
+                textView.attributedText = NSAttributedString(string: "ぶった斬りサムライでござる。", attributes: attributes)
+            }
             cancellables.forEach { $0.cancel() }
         } else {
             do {
@@ -249,38 +253,35 @@ private extension ViewController {
                 print("cleave: \(result.cleave)")
                 print("Reason: \(result.reason)")
 
-                let ngCount = self.lastThreeCleaves.filter({ $0 }).count
+                let ngCount = self.lastFiveCleaves.filter({ $0 }).count
                 print(ngCount)
 
-                if ngCount >= 5 {
+                if ngCount >= 3 {
                     let text = "論点がズレているでござる！エンジニアが最高に幸せに感じる事を議論するでござる！！！！！！"
                     self.imageView.image = .init(named: "angry")
                     self.playEffectSound(soundFile: .cleaveEffectSoundMax)
                     self.textView.attributedText = NSAttributedString(string: text, attributes: self.attributes)
+                    self.isComplete = true
                 } else if ngCount == 2 || ngCount == 3 || ngCount == 4 {
                     let text = result.reason
                     self.imageView.image = .init(named: "angry")
+//                    if !self.didSound {
+//                        self.playEffectSound(soundFile: .cleaveEffectSound)
+//                        self.didSound = true
+//                    }
                     self.playEffectSound(soundFile: .cleaveEffectSound)
-                    self.textView.attributedText = NSAttributedString(string: result.reason, attributes: self.attributes)
+                    self.textView.attributedText = NSAttributedString(string: text, attributes: self.attributes)
                 } else if ngCount == 1 {
                     let text = "効率よく会議が進んでいる"
                     self.imageView.image = Bool.random() ? .init(named: "stare_openeyes") : .init(named: "stare_closeeyes")
                     self.textView.attributedText = NSAttributedString(string: text, attributes: self.attributes)
+                    self.didSound = false
                 } else if ngCount == 0 {
                     let text = "効率よく会議が進んでいる"
                     self.imageView.image = .init(named: "sleep")
                     self.textView.attributedText = NSAttributedString(string: text, attributes: self.attributes)
+                    self.didSound = false
                 }
-//
-//                if result.ngCase {
-//                    self.imageView.image = .init(named: "angry")
-//                    self.playEffectSound(soundFile: .cleaveEffectSound)
-//                    self.textView.attributedText = NSAttributedString(string: result.reason, attributes: self.attributes)
-//                } else {
-//                    print("lastThreeCleaves: \(self.lastThreeCleaves)")
-//                    self.imageView.image = Bool.random() ? .init(named: "stare_openeyes") : .init(named: "stare_closeeyes")
-//                    self.textView.attributedText = NSAttributedString(string: "効率よく会議が進んでいる", attributes: self.attributes)
-//                }
             }).store(in: &cancellables)
     }
 }
