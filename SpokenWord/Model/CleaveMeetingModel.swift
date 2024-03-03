@@ -13,4 +13,6 @@ struct CleaveMeetingModel {
     let sentence: String
     let cleave: Bool
     let reason: String
+
+    var ngCase: Bool { cleave == true }
 }

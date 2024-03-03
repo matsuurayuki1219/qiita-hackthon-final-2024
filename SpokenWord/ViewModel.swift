@@ -11,15 +11,13 @@ import Combine
 
 @MainActor
 class ViewModel {
-
-    @Published var results: [CleaveMeetingModel] = []
-
     @Published var result: CleaveMeetingModel?
     private let repository = CleaveMeetingRepository()
 
     func postSpeechText(text: String) {
         Task {
             do {
+                print(text)
                 let convertedText =  text.replacingOccurrences(of: "。", with: "→").replacingOccurrences(of: "？", with: "→")
                 result = try await repository.postSpeechMessage(text: convertedText)
             } catch {

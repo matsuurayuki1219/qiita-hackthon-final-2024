@@ -11,6 +11,8 @@ import Combine
 import AVFAudio
 
 public class ViewController: UIViewController, SFSpeechRecognizerDelegate {
+    var recentCleaves: [Bool] = []
+    var lastThreeCleaves: [Bool] { recentCleaves.suffix(3) }
 
     lazy var lineSpaceStyle: NSMutableParagraphStyle = {
         let lineSpaceStyle = NSMutableParagraphStyle()
@@ -236,23 +238,40 @@ private extension ViewController {
     func addObserver() {
         viewModel.$result
             .sink(receiveValue: { result in
-                if result?.cleave == true {
+                guard let result = result else { return }
+                self.recentCleaves.append(result.cleave)
+
+                print("cleave: \(result.cleave)")
+                print("Reason: \(result.reason)")
+//
+//                let ngCount = self.lastThreeCleaves.filter({ $0 }).count
+//
+//                if ngCount >= 3 {
+//論点がズレているでござる！エンジニアが最高に幸せに感じる事を議論するでござる！！！！！！
+//                } else if ngCount == 2 {
+//
+//                } else if ngCount == 1 {
+//
+//                } else if ngCount == 0 {
+//
+//                }
+
+                if result.ngCase {
                     self.imageView.image = .init(named: "angry")
                     self.playEffectSound()
-                    self.textView.attributedText = NSAttributedString(string: result!.reason, attributes: self.attributes)
-                    print("Reason: \(result!.reason)")
+                    self.textView.attributedText = NSAttributedString(string: result.reason, attributes: self.attributes)
                 } else {
-                    let openCloseEyes = Bool.random()
-                    if openCloseEyes {
-                        self.imageView.image = .init(named: "stare_openeyes")
-                    }
-                    else {
-                        self.imageView.image = .init(named: "stare_closeeyes")
-                    }
+                    print("lastThreeCleaves: \(self.lastThreeCleaves)")
+//                    if self.lastThreeCleaves.filter({ $0 }).count == 0 {
+//                        self.imageView.image = .init(named: "sleep")
+//                    } else {
+//                        self.imageView.image = Bool.random() ? .init(named: "stare_openeyes") : .init(named: "stare_closeeyes")
+//                    }
 
-                    self.textView.attributedText = NSAttributedString(string: "いいね。ひきつづける", attributes: self.attributes)
+                    self.imageView.image = Bool.random() ? .init(named: "stare_openeyes") : .init(named: "stare_closeeyes")
+
+                    self.textView.attributedText = NSAttributedString(string: "効率よく会議が進んでいる", attributes: self.attributes)
                 }
-
             }).store(in: &cancellables)
     }
 }
